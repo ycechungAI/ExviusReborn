@@ -8,6 +8,13 @@ The goal is to study architecture and systems design inspired by the discontinue
 ## Overview
 Project Exvius explores how to rebuild core systems of a large-scale gacha RPG using a local-first, offline architecture.
 
+This repository is a fork of [Hirurawa/GachaTest](https://github.com/Hirurawa/GachaTest) and tracks it closely. To sync with upstream:
+
+```bash
+git remote add upstream https://github.com/Hirurawa/GachaTest.git  # once
+git fetch upstream && git merge --ff-only upstream/main
+```
+
 Current implemented focus areas include:
 - Gacha and roster management with unique instance tracking.
 - Hybrid inventory model for stackable and unique items.
@@ -43,10 +50,9 @@ This repository follows strict composition and service-driven orchestration.
 - godot/: Godot client project.
   - godot/core/: Shared service autoloads and systems.
   - godot/features/: Gameplay and outgame feature modules.
-  - godot/assets/: Static assets and data files.
+  - godot/assets/: Static assets and data files (not checked in; see Assets below).
 - bin_parser/: Python tools for parsing binary datamine files.
-- scripts/: Build and utility scripts.
-- build_pipeline.py: Asset pipeline entry point.
+- build_pipeline.py: Headless export entry point (Windows / Android).
 
 ## Quick Start
 ### Launch the Godot client
@@ -56,8 +62,11 @@ This repository follows strict composition and service-driven orchestration.
 No backend or Docker setup is required. The game runs fully offline using local file persistence.
 
 ## Additional Documentation
-- Client architecture and conventions: godot/README.md
-- AI coding/architecture rules for this repo: AGENTS.md
+- Project specification and current state: [SPEC.md](SPEC.md)
+- Development roadmap: [TODO.md](TODO.md)
+- Client architecture and conventions: [godot/README.md](godot/README.md)
+- AI coding/architecture rules for this repo: [RULES.md](RULES.md) and [CLAUDE.md](CLAUDE.md)
+- Static data and save-data shapes: [DATA_SCHEMA.md](DATA_SCHEMA.md)
 
 ## Assets
 The assets folder is huge, and is not checked in under source control. It is a subtree of DaddyRaegen's ffbe_asset_dump repo with some modifications. The final assets folder can be found here: https://drive.google.com/file/d/1DCw_qFpe03-rCnMiKMWAS5EV56XYO-GA/view?usp=drive_link
